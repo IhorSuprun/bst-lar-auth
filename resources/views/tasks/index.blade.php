@@ -21,8 +21,10 @@
 
                                 <!-- Заголовок таблицы -->
                                 <thead>
-                                <th>Task</th>
-                                <th>&nbsp;</th>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Action</th>
+                                    </tr>
                                 </thead>
 
                                 <!-- Тело таблицы -->
@@ -35,7 +37,14 @@
                                         </td>
 
                                         <td>
-                                            <!-- TODO: Кнопка Удалить -->
+                                            <form action="{{ url(route('tasks.destroy',['task'=>$task->id])) }}" method="POST">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+
+                                                <button type="submit"  class="btn btn-danger">
+                                                    <i class="fa fa-btn fa-trash"></i>Удалить
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endforeach

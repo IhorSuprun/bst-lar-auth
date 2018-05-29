@@ -8,7 +8,11 @@
                 <div class="panel-heading">All Tasks</div>
 
                 <div class="panel-body">
-                    <div><a href="{{url(route('tasks.create'))}}">Add new task</a></div>
+                    <div><a href="{{url(route('tasks.create'))}}">
+                            <i class="fa fa-plus"></i> Добавить задачу
+                        </a>
+                        <br></br>
+                    </div>
                     <!-- Текущие задачи -->
                     @if (count($tasks) > 0)
                     <div class="panel panel-default">
@@ -44,6 +48,12 @@
                                                 <button type="submit"  class="btn btn-danger">
                                                     <i class="fa fa-btn fa-trash"></i>Удалить
                                                 </button>
+                                            </form>
+                                            <form>
+                                                {{ csrf_field() }}
+                                                <a href="{{ url(route('tasks.edit',['task'=>$task->id])) }}" class="btn btn-primary">
+                                                    <i class="fa fa-btn fa-edit"></i>
+                                                </a>
                                             </form>
                                         </td>
                                     </tr>

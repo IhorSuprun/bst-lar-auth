@@ -41,8 +41,25 @@ class TaskController extends Controller {
     }
 
     public function destroy(Task $task) {
+        $this->authorize('destroy', $task);
         $task->delete();
         return redirect()->route('tasks.index');
+    }
+
+    public function edit(Task $task) {
+        return view('tasks.edit', [
+            'task' => $task]);
+    }
+
+    public function update(Task $task, Request $request) {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+        ]);
+        $request->user()->tasks()->update([
+            'name' => $request->name,
+        ]);
+//        как оно работает??????????????????
+        return redirect(route('tasks.index'));
     }
 
 }

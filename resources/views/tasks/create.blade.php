@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Create New Task</div>
-
+                @include('common.errors');
                 <!-- Форма новой задачи -->
                 <form action="{{ url(route('tasks.store')) }}" method="POST" class="form-horizontal">
                     {{ csrf_field() }}

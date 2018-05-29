@@ -17,11 +17,11 @@ class TaskController extends Controller {
     }
 
     public function index() {
-        return 'index';
+        return view('tasks.index');
     }
 
     public function create() {
-        return 'create';
+        return view('tasks.create');
     }
 
     public function store() {
